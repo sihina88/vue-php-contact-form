@@ -1,0 +1,19 @@
+# Allow all access to this directory
+# このディレクトリへのすべてのアクセスを許可
+Require all granted
+
+# Allow PHP files to be executed
+# PHPファイルの実行を許可
+<Files "*.php">
+    Require all granted
+</Files>
+
+# Disable directory listing for security
+# セキュリティのためディレクトリリストを無効化
+Options -Indexes
+
+# Enable PHP processing
+# PHP処理を有効化
+<IfModule mod_php.c>
+    php_flag engine on
+</IfModule>

@@ -1,0 +1,281 @@
+/**
+ * Reusable Animations
+ * 再利用可能なアニメーション
+ * 
+ * Centralized animation definitions for transitions, keyframes, and effects
+ * 遷移、キーフレーム、エフェクトの集中化されたアニメーション定義
+ */
+
+/* Page Transitions - Forward slide (Input → Confirm → Complete) / ページ遷移 - 前方スライド（入力 → 確認 → 完了） */
+.slide-forward-enter-active {
+  transition: all var(--transition-page-duration) var(--transition-page-easing);
+  z-index: 2;
+  position: relative;
+  background: var(--color-white);
+}
+
+.slide-forward-leave-active {
+  transition: all var(--transition-page-duration) var(--transition-page-easing);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* Use height: 100% to match parent container height dynamically / 親コンテナの高さに動的に一致させるためにheight: 100%を使用 */
+  height: 100%;
+  z-index: 1;
+  background: var(--color-white);
+}
+
+.slide-forward-enter-active,
+.slide-forward-leave-active {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.slide-forward-enter-from {
+  opacity: 0;
+  transform: translateX(var(--transition-slide-distance));
+}
+
+.slide-forward-leave-to {
+  opacity: 0;
+  transform: translateX(calc(var(--transition-slide-distance) * -1));
+}
+
+/* Backward slide (Complete → Confirm → Input) / 後方スライド（完了 → 確認 → 入力） */
+.slide-backward-enter-active {
+  transition: all var(--transition-page-duration) var(--transition-page-easing);
+  z-index: 2;
+  position: relative;
+  background: var(--color-white);
+}
+
+.slide-backward-leave-active {
+  transition: all var(--transition-page-duration) var(--transition-page-easing);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* Use height: 100% to match parent container height dynamically / 親コンテナの高さに動的に一致させるためにheight: 100%を使用 */
+  height: 100%;
+  z-index: 1;
+  background: var(--color-white);
+}
+
+.slide-backward-enter-active,
+.slide-backward-leave-active {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.slide-backward-enter-from {
+  opacity: 0;
+  transform: translateX(calc(var(--transition-slide-distance) * -1));
+}
+
+.slide-backward-leave-to {
+  opacity: 0;
+  transform: translateX(var(--transition-slide-distance));
+}
+
+/* Fade transition (for completion screen) / フェード遷移（完了画面用） */
+.fade-enter-active {
+  transition: all var(--transition-page-duration) var(--transition-page-easing);
+  z-index: 2;
+  position: relative;
+  background: var(--color-white);
+}
+
+.fade-leave-active {
+  transition: all var(--transition-page-duration) var(--transition-page-easing);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* Use height: 100% to match parent container height dynamically / 親コンテナの高さに動的に一致させるためにheight: 100%を使用 */
+  height: 100%;
+  z-index: 1;
+  background: var(--color-white);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: scale(var(--transition-scale-factor)) translateY(var(--transition-fade-y-offset));
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(var(--transition-scale-factor)) translateY(calc(var(--transition-fade-y-offset) * -1));
+}
+
+/* Error Message Slide Down Animation / エラーメッセージスライドダウンアニメーション */
+.slide-down-enter-active {
+  transition: all var(--transition-base) ease-out;
+}
+
+.slide-down-leave-active {
+  transition: all var(--transition-fast);
+}
+
+.slide-down-enter-from {
+  opacity: 0;
+  transform: translateY(calc(var(--transition-slide-down-distance) * -1));
+  max-height: 0;
+}
+
+.slide-down-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 100px;
+}
+
+.slide-down-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 100px;
+}
+
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(calc(var(--transition-slide-down-distance) * -1));
+  max-height: 0;
+}
+
+/* Stagger Fade Animation for Confirmation Items / 確認項目の段階的フェードアニメーション */
+.stagger-fade-enter-active {
+  transition: all var(--transition-slow);
+  transition-delay: var(--delay, 0s);
+}
+
+.stagger-fade-leave-active {
+  transition: all var(--transition-base) ease-in;
+}
+
+.stagger-fade-enter-from {
+  opacity: 0;
+  transform: translateY(var(--transition-stagger-distance));
+}
+
+.stagger-fade-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-fade-leave-to {
+  opacity: 0;
+  transform: translateY(calc(var(--transition-stagger-distance) * -1));
+}
+
+/* Success Icon Bounce Animation / 成功アイコンのバウンスアニメーション */
+@keyframes successBounce {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Fade In Up Animation / フェードインアップアニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(var(--transition-stagger-distance));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spinner Animation / スピナーアニメーション */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Reduced Motion Support / モーション削減サポート */
+/* WCAG 2.1 Level AAA compliance - Respects user's motion preferences */
+/* WCAG 2.1 Level AAA準拠 - ユーザーのモーション設定を尊重 */
+@media (prefers-reduced-motion: reduce) {
+  .slide-forward-enter-active,
+  .slide-forward-leave-active,
+  .slide-backward-enter-active,
+  .slide-backward-leave-active,
+  .fade-enter-active,
+  .fade-leave-active,
+  .slide-down-enter-active,
+  .slide-down-leave-active,
+  .stagger-fade-enter-active,
+  .stagger-fade-leave-active {
+    transition: opacity 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  
+  .slide-forward-enter-from,
+  .slide-forward-leave-to,
+  .slide-backward-enter-from,
+  .slide-backward-leave-to,
+  .fade-enter-from,
+  .fade-leave-to,
+  .slide-down-enter-from,
+  .slide-down-leave-to,
+  .stagger-fade-enter-from,
+  .stagger-fade-leave-to {
+    transform: none !important;
+  }
+  
+  @keyframes successBounce {
+    0%, 50%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from, to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+/* Mobile Optimizations / モバイル最適化 */
+/* Reduced animation distances and faster stagger for better performance on mobile devices */
+/* モバイルデバイスでのパフォーマンス向上のため、アニメーション距離を縮小し、スタッガーを高速化 */
+@media (max-width: 768px) {
+  :root {
+    --transition-slide-distance: var(--transition-slide-distance-mobile);
+  }
+  
+  .stagger-fade-enter-active {
+    transition-delay: calc(var(--delay, 0s) * 0.5);
+  }
+}

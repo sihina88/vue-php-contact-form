@@ -1,0 +1,42 @@
+/**
+ * Base Styles and Reset
+ * ベーススタイルとリセット
+ * 
+ * Global CSS reset and base styles for the application
+ * アプリケーションのグローバルCSSリセットとベーススタイル
+ */
+
+/* Global Reset / グローバルリセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styles / ボディスタイル */
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+}
+
+/* Mobile improvements / モバイル改善 */
+@media (max-width: 768px) {
+  body {
+    padding: var(--spacing-md);
+    align-items: center;
+    padding-top: var(--spacing-xl);
+  }
+}
+
+/* Small Mobile / 小型モバイル */
+@media (max-width: 480px) {
+  body {
+    padding: var(--spacing-sm);
+    padding-top: var(--spacing-lg);
+  }
+}

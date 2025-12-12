@@ -1,0 +1,31 @@
+# Docker Compose Configuration
+# Docker Compose設定
+#
+# Defines services for frontend and backend development
+# フロントエンドとバックエンドの開発用サービスを定義
+
+services:
+  # Frontend Service (Vue.js) / フロントエンドサービス（Vue.js）
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules  # Use anonymous volume for node_modules to prevent host override / ホストの上書きを防ぐためにnode_modulesに匿名ボリュームを使用
+    working_dir: /app
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+    environment:
+      # Use Docker service name for backend API / バックエンドAPIにDockerサービス名を使用
+      API_URL: http://backend:80
+    depends_on:
+      - backend
+
+  # Backend Service (PHP) / バックエンドサービス（PHP）
+  backend:
+    build: ./backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./backend:/var/www  # Mount entire backend directory / バックエンドディレクトリ全体をマウント
+      - ./backend/public:/var/www/html  # Mount public as document root / publicをドキュメントルートとしてマウント
