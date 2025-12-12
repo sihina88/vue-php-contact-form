@@ -12,7 +12,7 @@ The Contact Form application is a full-stack web application with a clear separa
 ```
 ┌─────────────────┐         ┌─────────────────┐
 │   Frontend      │         │    Backend      │
-│   (Vue.js)      │────────▶│    (PHP)         │
+│   (Vue.js)      │────────▶│    (PHP)        │
 │   Port: 5173    │  HTTP   │    Port: 8080   │
 └─────────────────┘         └─────────────────┘
 ```
