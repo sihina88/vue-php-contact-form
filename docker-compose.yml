@@ -29,3 +29,25 @@ services:
     volumes:
       - ./backend:/var/www  # Mount entire backend directory / バックエンドディレクトリ全体をマウント
       - ./backend/public:/var/www/html  # Mount public as document root / publicをドキュメントルートとしてマウント
+    # ========================================================================
+    # SMTP ENVIRONMENT VARIABLES (COMMENTED OUT - UNCOMMENT WHEN USING SMTP)
+    # SMTP環境変数（コメントアウト - SMTP使用時にコメントを解除）
+    # ========================================================================
+    # Uncomment the environment section below when ready to use SMTP:
+    # SMTP使用準備ができたら、以下のenvironmentセクションのコメントを解除:
+    #
+    # environment:
+    #   - APP_ENV=production
+    #   - ADMIN_EMAIL=admin@yourdomain.com
+    #   - SMTP_HOST=smtp.gmail.com
+    #   - SMTP_USERNAME=your-email@gmail.com
+    #   - SMTP_PASSWORD=your-app-password
+    #   - SMTP_PORT=587
+    #   - SMTP_ENCRYPTION=tls
+    #   - EMAIL_FROM_NAME=Your Company Name
+    #
+    # Note: For Gmail, you need to use an "App Password" instead of your regular password.
+    # Generate one at: https://myaccount.google.com/apppasswords
+    #
+    # 注意: Gmailの場合、通常のパスワードの代わりに「アプリパスワード」を使用する必要があります。
+    # 生成: https://myaccount.google.com/apppasswords

@@ -78,4 +78,87 @@ class Config
             'message' => 5000   // Maximum characters for message field / お問い合わせ内容フィールドの最大文字数
         ];
     }
+
+    // ============================================================================
+    // SMTP CONFIGURATION METHODS (COMMENTED OUT - UNCOMMENT WHEN READY TO USE)
+    // SMTP設定メソッド（コメントアウト - 使用準備ができたらコメントを解除）
+    // ============================================================================
+    // 
+    // To enable SMTP email sending:
+    // 1. Uncomment the methods below
+    // 2. Install Composer dependencies: composer install (in backend directory)
+    // 3. Set environment variables in docker-compose.yml or .env file
+    // 4. Uncomment SMTP code in EmailService.php
+    // 5. Update api.php to use new EmailService signature
+    //
+    // SMTPメール送信を有効にするには:
+    // 1. 以下のメソッドのコメントを解除
+    // 2. Composer依存関係をインストール: composer install (backendディレクトリで)
+    // 3. docker-compose.ymlまたは.envファイルで環境変数を設定
+    // 4. EmailService.phpのSMTPコードのコメントを解除
+    // 5. api.phpを更新して新しいEmailServiceシグネチャを使用
+    //
+    // Required environment variables:
+    // - ADMIN_EMAIL: Admin email address for notifications
+    // - SMTP_HOST: SMTP server hostname (e.g., smtp.gmail.com)
+    // - SMTP_USERNAME: SMTP username/email
+    // - SMTP_PASSWORD: SMTP password or app password
+    // - SMTP_PORT: SMTP port (usually 587 for TLS, 465 for SSL)
+    // - SMTP_ENCRYPTION: 'tls' or 'ssl'
+    // - EMAIL_FROM_NAME: Display name for sender
+    //
+    // 必要な環境変数:
+    // - ADMIN_EMAIL: 通知用の管理者メールアドレス
+    // - SMTP_HOST: SMTPサーバーホスト名（例: smtp.gmail.com）
+    // - SMTP_USERNAME: SMTPユーザー名/メールアドレス
+    // - SMTP_PASSWORD: SMTPパスワードまたはアプリパスワード
+    // - SMTP_PORT: SMTPポート（TLSは通常587、SSLは465）
+    // - SMTP_ENCRYPTION: 'tls' または 'ssl'
+    // - EMAIL_FROM_NAME: 送信者の表示名
+
+    // Uncomment the following methods when ready to use SMTP:
+    // SMTP使用準備ができたら、以下のメソッドのコメントを解除:
+    /*
+    // Get admin email address / 管理者メールアドレスを取得
+    public static function getAdminEmail(): string
+    {
+        return getenv('ADMIN_EMAIL') ?: 'admin@example.com';
+    }
+
+    // Get SMTP host / SMTPホストを取得
+    public static function getSmtpHost(): string
+    {
+        return getenv('SMTP_HOST') ?: 'smtp.gmail.com';
+    }
+
+    // Get SMTP username / SMTPユーザー名を取得
+    public static function getSmtpUsername(): string
+    {
+        return getenv('SMTP_USERNAME') ?: '';
+    }
+
+    // Get SMTP password / SMTPパスワードを取得
+    public static function getSmtpPassword(): string
+    {
+        return getenv('SMTP_PASSWORD') ?: '';
+    }
+
+    // Get SMTP port / SMTPポートを取得
+    public static function getSmtpPort(): int
+    {
+        return (int)(getenv('SMTP_PORT') ?: 587);
+    }
+
+    // Get SMTP encryption method / SMTP暗号化方法を取得
+    public static function getSmtpEncryption(): string
+    {
+        return getenv('SMTP_ENCRYPTION') ?: 'tls';
+    }
+
+    // Get email sender display name / メール送信者の表示名を取得
+    public static function getEmailFromName(): string
+    {
+        return getenv('EMAIL_FROM_NAME') ?: 'Contact Form';
+    }
+    */
 }

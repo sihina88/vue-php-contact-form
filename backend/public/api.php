@@ -81,10 +81,37 @@ if (!empty($errors)) {
 
 // Send email / メールを送信
 try {
+    // ========================================================================
+    // CURRENT IMPLEMENTATION: Using PHP mail() function
+    // 現在の実装: PHP mail()関数を使用
+    // ========================================================================
     // Send contact form email to user / ユーザーにお問い合わせフォームのメールを送信
     // Note: Email is sent to the user's own email as a confirmation
     // 注意: 確認として、ユーザー自身のメールアドレスにメールが送信されます
     EmailService::sendContactEmail($email, $name, $email, $message);
+    
+    // ========================================================================
+    // SMTP IMPLEMENTATION (COMMENTED OUT - UNCOMMENT WHEN READY TO USE)
+    // SMTP実装（コメントアウト - 使用準備ができたらコメントを解除）
+    // ========================================================================
+    // To enable SMTP email sending, comment out the line above and uncomment below:
+    // SMTPメール送信を有効にするには、上記の行をコメントアウトし、以下をコメント解除:
+    //
+    // EmailService::sendContactEmailSMTP($email, $name, $message);
+    //
+    // This will send emails to both user (confirmation) and admin (notification)
+    // via SMTP using PHPMailer. Make sure:
+    // 1. Config.php SMTP methods are uncommented
+    // 2. EmailService.php SMTP methods are uncommented
+    // 3. Composer dependencies are installed (composer install)
+    // 4. Environment variables are set (SMTP_HOST, SMTP_USERNAME, etc.)
+    //
+    // これは、PHPMailerを使用してSMTP経由でユーザー（確認）と管理者（通知）の両方に
+    // メールを送信します。以下を確認してください:
+    // 1. Config.phpのSMTPメソッドのコメントが解除されている
+    // 2. EmailService.phpのSMTPメソッドのコメントが解除されている
+    // 3. Composer依存関係がインストールされている（composer install）
+    // 4. 環境変数が設定されている（SMTP_HOST、SMTP_USERNAMEなど）
     
     // Send success response / 成功レスポンスを送信
     ResponseHandler::sendSuccess();
